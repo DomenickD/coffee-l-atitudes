@@ -1,0 +1,12 @@
+node_modules
+.next
+.git
+.env
+.env.*
+!.env.example
+.pgdata
+playwright-report
+test-results
+coverage
+README.md
+HANDOFF_STATE.md

@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-crema-50 text-espresso-950 antialiased selection:bg-terracotta-500/20 selection:text-espresso-950;
+  }
+}
+
+/* Architectural exposed-brick CSS fallback texture for BrickWallHero */
+.brick-wall-fallback {
+  background-color: #8f412b;
+  background-image:
+    radial-gradient(ellipse at 50% 42%, rgba(255, 214, 170, 0.28) 0%, rgba(48, 22, 14, 0.45) 85%),
+    linear-gradient(335deg, rgba(186, 78, 48, 0.92) 23px, transparent 23px),
+    linear-gradient(155deg, rgba(206, 92, 58, 0.9) 23px, transparent 23px),
+    linear-gradient(335deg, rgba(164, 66, 39, 0.92) 23px, transparent 23px),
+    linear-gradient(155deg, rgba(196, 84, 52, 0.88) 23px, transparent 23px);
+  background-size: 100% 100%, 58px 58px, 58px 58px, 58px 58px, 58px 58px;
+  background-position: 0 0, 0 2px, 4px 35px, 29px 31px, 34px 6px;
+}
+
+@keyframes hotspotPulseRing {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.85;
+  }
+  70% {
+    transform: scale(1.32);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.32);
+    opacity: 0;
+  }
+}
+
+.hotspot-pulse-ring {
+  animation: hotspotPulseRing 1.9s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
