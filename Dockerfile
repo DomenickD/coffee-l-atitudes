@@ -35,9 +35,11 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/prisma ./prisma
 COPY --from=builder --chown=nextjs:nodejs /app/node_modules/prisma ./node_modules/prisma
 COPY --from=builder --chown=nextjs:nodejs /app/node_modules/@prisma ./node_modules/@prisma
-COPY --from=builder --chown=nextjs:nodejs /app/node_modules/.bin/prisma ./node_modules/.bin/prisma
 
 USER nextjs
 EXPOSE 3000
 
-CMD ["sh", "-c", "./node_modules/.bin/prisma migrate deploy && node server.js"]
+# Invoke Prisma's entry file directly: copying node_modules/.bin/prisma (a symlink)
+# across build stages dereferences it into a flat file, which breaks its __dirname-relative
+# lookup of the WASM schema engine.
+CMD ["sh", "-c", "node node_modules/prisma/build/index.js migrate deploy && node server.js"]
