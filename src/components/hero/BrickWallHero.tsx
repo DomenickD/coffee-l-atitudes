@@ -15,7 +15,6 @@ import {
   RotateCcw,
   Shirt,
   ShoppingBag,
-  Sparkles,
 } from "lucide-react";
 import {
   DEFAULT_HOTSPOTS,
@@ -109,8 +108,6 @@ export function BrickWallHero() {
   }, [videoAvailable, manualScrub]);
 
   const activeHotspotId = getActiveHotspotId(currentTime, hotspots);
-  const activeHotspot =
-    hotspots.find((h) => h.id === activeHotspotId) ?? hotspots[0];
 
   // Pointer drag-and-drop for ?calibrate=1 mode
   const handleStagePointerMove = useCallback(
@@ -345,35 +342,6 @@ export function BrickWallHero() {
             </Link>
           );
         })}
-      </div>
-
-      {/* Bottom Spotlight Indicator Bar */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-5 z-20 mx-auto max-w-4xl px-4 sm:px-6">
-        <div className="pointer-events-auto flex flex-col gap-2 rounded-2xl border border-white/15 bg-espresso-950/75 px-4 py-3 backdrop-blur-md sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center gap-2.5 text-xs">
-            <Sparkles className="h-4 w-4 text-crema-300" />
-            <span className="text-crema-200/85">
-              Now spotlighting:{" "}
-              <strong className="text-white">{activeHotspot.label}</strong>
-            </span>
-          </div>
-
-          <div className="flex items-center gap-1.5">
-            {hotspots.map((spot) => {
-              const isActive = spot.id === activeHotspotId;
-              return (
-                <Link
-                  key={spot.id}
-                  href={spot.href}
-                  className={`h-1.5 flex-1 rounded-full transition-all sm:w-10 sm:flex-none ${
-                    isActive ? "bg-terracotta-400" : "bg-white/20 hover:bg-white/40"
-                  }`}
-                  title={spot.label}
-                />
-              );
-            })}
-          </div>
-        </div>
       </div>
 
       {/* ?calibrate=1 Coordinate Calibration Inspector Overlay */}

@@ -32,7 +32,7 @@ export const DEFAULT_HOTSPOTS: HeroHotspot[] = [
     xPct: 22,
     yPct: 34,
     mobileXPct: 50,
-    mobileYPct: 24,
+    mobileYPct: 38,
   },
   {
     id: "cafe-menu",
@@ -46,7 +46,7 @@ export const DEFAULT_HOTSPOTS: HeroHotspot[] = [
     xPct: 76,
     yPct: 30,
     mobileXPct: 50,
-    mobileYPct: 38,
+    mobileYPct: 50,
   },
   {
     id: "bagged-coffee",
@@ -60,7 +60,7 @@ export const DEFAULT_HOTSPOTS: HeroHotspot[] = [
     xPct: 20,
     yPct: 62,
     mobileXPct: 50,
-    mobileYPct: 52,
+    mobileYPct: 62,
   },
   {
     id: "merch",
@@ -74,7 +74,7 @@ export const DEFAULT_HOTSPOTS: HeroHotspot[] = [
     xPct: 78,
     yPct: 60,
     mobileXPct: 50,
-    mobileYPct: 66,
+    mobileYPct: 74,
   },
   {
     id: "learn-about-us",
@@ -88,7 +88,7 @@ export const DEFAULT_HOTSPOTS: HeroHotspot[] = [
     xPct: 50,
     yPct: 78,
     mobileXPct: 50,
-    mobileYPct: 80,
+    mobileYPct: 86,
   },
 ];
 
