@@ -31,10 +31,11 @@ COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-# Copy Prisma schema, migrations, and CLI for startup `prisma migrate deploy`
+# Copy Prisma schema/migrations and the full node_modules for startup `prisma migrate
+# deploy` — the Prisma CLI has transitive deps (e.g. `effect`) hoisted to the top level
+# of node_modules, not nested under node_modules/prisma or node_modules/@prisma.
 COPY --from=builder --chown=nextjs:nodejs /app/prisma ./prisma
-COPY --from=builder --chown=nextjs:nodejs /app/node_modules/prisma ./node_modules/prisma
-COPY --from=builder --chown=nextjs:nodejs /app/node_modules/@prisma ./node_modules/@prisma
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules ./node_modules
 
 USER nextjs
 EXPOSE 3000
